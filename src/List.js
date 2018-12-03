@@ -4,7 +4,11 @@ const List = props => {
   return (
     <ul>
       {props.items.map((item, index) => {
-        return <li key={index}>{item}</li>;
+        return (
+          <li key={index} className="single-todo">
+            {item}
+          </li>
+        );
       })}
     </ul>
   );
