@@ -53,10 +53,10 @@ class TodoList extends Component {
     );
   }
 
-  _deleteTodo = (indexToDelete) => {
+  _deleteTodo = (idToDelete) => {
     console.log(this);
     this.setState({
-      items: this.state.items.filter((item, index) => index !== indexToDelete)
+      items: this.state.items.filter(item => item.id !== idToDelete)
     });
 
     // let itemsToKeep = [];
