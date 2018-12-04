@@ -12,6 +12,19 @@ class TodoList extends Component {
     // ewwwww.
     // this._deleteTodo = this._deleteTodo.bind(this);
   }
+
+  componentDidMount() {
+    // Make the Ajax call!
+    // Do eeeeet!
+    console.log('about to retrieve todos');
+    fetch('/todos')
+      .then(r => r.json())
+      .then(todoArray => {
+        console.table(todoArray);
+      })
+
+  }
+
   render() {
     return (
       <div className="todo-container">
