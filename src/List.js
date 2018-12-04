@@ -5,7 +5,14 @@ const List = props => {
     <ul>
       {props.items.map((item, index) => {
         return (
-          <li key={index} className="single-todo">
+          <li 
+            key={index} 
+            className="single-todo"
+            onClick={() => {
+              console.log(`yeah you clicked: ${index}`)
+              props.handleClick(index);
+            }}
+          >
             {item}
           </li>
         );

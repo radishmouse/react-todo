@@ -20,10 +20,34 @@ class TodoList extends Component {
           onChange={(event) => this._onChange(event.target.value)}
         />
         <div>
-          <List items={this.state.items} />
+          <List 
+            items={this.state.items}
+            handleClick={this._deleteTodo}
+          />
         </div>
       </div>
     );
+  }
+
+  _deleteTodo = indexToDelete => {
+    this.setState({
+      items: this.state.items.filter((item, index) => index !== indexToDelete)
+    });
+
+    // let itemsToKeep = [];
+    // // keep all the items except the one at `indexToDelete`
+    // this.state.items.forEach((item, index) => {
+    //   if (index === indexToDelete) {
+    //     console.log(`${index}: delete it!`);
+    //   } else {
+    //     console.log(`${index}: keep it!`);
+    //     itemsToKeep.push(item);
+    //   }
+    // });
+    // // this.state.items = itemsToKeep;
+    // this.setState({
+    //   items: itemsToKeep
+    // });
   }
 
   _onChange = userInput => {
@@ -46,5 +70,7 @@ class TodoList extends Component {
     });
   };
 }
+
+
 
 export default TodoList;
