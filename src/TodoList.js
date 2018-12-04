@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import List from "./List";
+import TodoForm from "./TodoForm";
 
 class TodoList extends Component {
   constructor(props) {
@@ -13,15 +14,11 @@ class TodoList extends Component {
     return (
       <div className="todo-container">
         <h1 className="title">Todo App</h1>
-        <form onSubmit={this._onSubmit}>
-          <input
-            value={this.state.term}
-            onChange={this._onChange}
-            placeholder="Enter Todo"
-          />
-          <button type="submit">add</button>
-        </form>
-
+        <TodoForm 
+          onSubmit={this._onSubmit}
+          term={this.state.term}
+          onChange={(event) => this._onChange(event.target.value)}
+        />
         <div>
           <List items={this.state.items} />
         </div>
@@ -29,9 +26,13 @@ class TodoList extends Component {
     );
   }
 
-  _onChange = event => {
+  _onChange = userInput => {
+    // const userInput = event.target.value;
+    console.log(userInput);
     this.setState({
-      term: event.target.value
+      term: userInput
+    }, () => {
+      console.log('wheee! state is now updated');
     });
   };
 
