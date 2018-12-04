@@ -8,10 +8,7 @@ const List = props => {
           <li 
             key={index} 
             className="single-todo"
-            onClick={() => {
-              console.log(`yeah you clicked: ${index}`)
-              props.handleClick(index);
-            }}
+            onClick={() => props.handleClick(index)}
           >
             {item}
           </li>

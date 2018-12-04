@@ -9,6 +9,8 @@ class TodoList extends Component {
       term: "",
       items: []
     };
+    // ewwwww.
+    // this._deleteTodo = this._deleteTodo.bind(this);
   }
   render() {
     return (
@@ -29,7 +31,8 @@ class TodoList extends Component {
     );
   }
 
-  _deleteTodo = indexToDelete => {
+  _deleteTodo = (indexToDelete) => {
+    console.log(this);
     this.setState({
       items: this.state.items.filter((item, index) => index !== indexToDelete)
     });
