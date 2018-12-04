@@ -55,9 +55,17 @@ class TodoList extends Component {
 
   _deleteTodo = (idToDelete) => {
     console.log(this);
-    this.setState({
-      items: this.state.items.filter(item => item.id !== idToDelete)
-    });
+
+    fetch(`/todos/${idToDelete}`, {
+      method: 'DELETE'
+    })
+    .then(result => {
+      console.log(result);
+      this.setState({
+        items: this.state.items.filter(item => item.id !== idToDelete)
+      });
+    })
+
 
     // let itemsToKeep = [];
     // // keep all the items except the one at `indexToDelete`
