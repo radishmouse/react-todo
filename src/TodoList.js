@@ -97,10 +97,26 @@ class TodoList extends Component {
     //puts on the brakes
     event.preventDefault();
     // console.log("submitted!");
-    this.setState({
-      term: "",
-      items: [...this.state.items, this.state.term]
-    });
+
+    fetch('/todos', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: this.state.term
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(r => r.json())
+    .then(todo => {
+      console.log(todo);
+      console.log('^^ is your new todo. enjoy.')
+      this.setState({
+        term: "",
+        items: [...this.state.items, todo]
+      });
+    })
+
   };
 }
 
